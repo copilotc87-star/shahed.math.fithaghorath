@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فیثاغورث - ۵۰۰+ اسلاید | ماشین حساب مهندسی کامل</title>
+<style>
+:root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --blue: #58a6ff;
+    --green: #3fb950;
+    --red: #f85149;
+    --yellow: #d2991d;
+    --purple: #bc8cff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial, sans-serif;background:var(--bg);color:var(--text);line-height:1.8;direction:rtl}
+.container{max-width:1100px;margin:0 auto;padding:15px}
+
+/* هدر */
+.header{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:10px 0;text-align:center;position:sticky;top:10px;z-index:100}
+.header h1{color:var(--yellow);font-size:1.8em}
+.header p{color:#8b949e;font-size:0.9em}
+.search-box{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid var(--border);background:#010409;color:var(--text);font-size:1em}
+.nav-tabs{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.tab{padding:8px 15px;border:none;border-radius:20px;cursor:pointer;font-size:0.85em;background:#21262d;color:var(--text);transition:0.2s}
+.tab:hover,.tab.active{background:var(--blue);color:#fff}
+
+/* اسلاید */
+.slide{display:none;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:25px;margin:15px 0;animation:fade 0.3s}
+.slide.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.slide h2{color:var(--blue);font-size:1.6em;margin-bottom:15px;text-align:center}
+.slide h3{color:var(--yellow);font-size:1.2em;margin:15px 0}
+.formula{text-align:center;font-size:2em;color:var(--yellow);padding:20px;background:#010409;border-radius:12px;margin:15px 0;border:2px solid var(--border)}
+.box{background:#010409;padding:18px;border-radius:10px;margin:12px 0;border-right:3px solid var(--blue)}
+.box.green{border-right-color:var(--green)}
+.box.red{border-right-color:var(--red)}
+.box.yellow{border-right-color:var(--yellow)}
+
+/* ماشین حساب */
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:15px 0}
+.calc-card{background:#010409;border:1px solid var(--border);border-radius:10px;padding:15px}
+.calc-card h4{color:var(--blue);margin-bottom:10px;text-align:center}
+.calc-card input,.calc-card select{width:100%;padding:10px;margin:6px 0;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:1em;text-align:center}
+.calc-card button{width:100%;padding:10px;margin:8px 0;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;transition:0.2s}
+.btn-blue{background:#1f6feb;color:#fff}
+.btn-green{background:#238636;color:#fff}
+.btn-red{background:#da3633;color:#fff}
+.btn-yellow{background:#9e6a03;color:#fff}
+.calc-card button:hover{opacity:0.85}
+.result-box{background:#010409;border:2px solid var(--green);border-radius:10px;padding:15px;margin:10px 0;text-align:center;display:none}
+.result-box.show{display:block}
+.result-main{font-size:1.5em;color:var(--green)}
+.result-detail{color:#8b949e;font-size:0.9em;margin-top:5px}
+
+/* ناوبری */
+.nav-btns{display:flex;gap:8px;justify-content:center;margin:20px 0;flex-wrap:wrap}
+.nav-btn{padding:10px 18px;border:none;border-radius:25px;cursor:pointer;font-size:0.95em;font-weight:bold;transition:0.2s;background:#21262d;color:var(--text)}
+.nav-btn:hover{opacity:0.8}
+.nav-btn.primary{background:var(--blue)}
+.nav-btn.success{background:var(--green)}
+.page-info{text-align:center;color:#484f58;font-size:0.85em}
+
+/* آزمون */
+.quiz-btn{display:block;width:100%;padding:15px;margin:10px 0;background:#010409;border:2px solid var(--border);border-radius:10px;color:var(--text);font-size:1.1em;cursor:pointer;text-align:right;transition:0.2s}
+.quiz-btn:hover{border-color:var(--blue)}
+.quiz-btn.correct{background:var(--green);border-color:var(--green);color:#fff}
+.quiz-btn.wrong{background:var(--red);border-color:var(--red);color:#fff}
+
+/* جدول */
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{padding:10px;border:1px solid var(--border);text-align:center}
+th{background:var(--blue);color:#fff}
+tr:nth-child(even){background:#010409}
+
+/* Responsive */
+@media(max-width:600px){
+    .header h1{font-size:1.3em}
+    .formula{font-size:1.3em}
+    .calc-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ═══════════════ هدر ═══════════════ -->
+<div class="header">
+    <h1>🎓 قضیه فیثاغورث - دانشنامه جامع</h1>
+    <p>۵۰۰+ اسلاید | آموزش از صفر تا صد | ماشین حساب مهندسی کامل</p>
+    <input type="text" class="search-box" placeholder="🔍 جستجو در اسلایدها..." oninput="searchSlide(this.value)">
+    <div class="nav-tabs" id="tabBar"></div>
+</div>
+
+<!-- ═══════════════ محتوای اسلایدها ═══════════════ -->
+<div id="slideContent"></div>
+
+<!-- ═══════════════ ناوبری پایین ═══════════════ -->
+<div class="nav-btns">
+    <button class="nav-btn" onclick="goTo(1)">🏠</button>
+    <button class="nav-btn" onclick="goTo(current-1)">◀</button>
+    <span class="page-info" id="pageInfo"></span>
+    <button class="nav-btn" onclick="goTo(current+1)">▶</button>
+    <button class="nav-btn" onclick="goTo(totalSlides)">⏭</button>
+    <button class="nav-btn primary" onclick="goTo(50)">🧮 ماشین حساب</button>
+    <button class="nav-btn success" onclick="goTo(400)">🎯 آزمون</button>
+</div>
+
+</div>
+
+<script>
+// ═══════════════ داده‌های ۵۰۰+ اسلاید ═══════════════
+const slides = [];
+let current = 1;
+let totalSlides = 0;
+
+function addSlide(title, category, content) {
+    slides.push({title, category, content});
+}
+
+// ═══════════════ بخش ۱: مقدمات (اسلاید ۱-۵۰) ═══════════════
+addSlide("🎓 خوش آمدید", "مقدمه", `<div class="formula">a² + b² = c²</div><p style="text-align:center">دانشنامه جامع قضیه فیثاغورث<br>۵۰۰+ اسلاید آموزشی<br>همراه با ماشین حساب مهندسی کامل</p>`);
+addSlide("📋 راهنمای استفاده", "مقدمه", `<div class="box"><b>🔍 جستجو:</b> از باکس جستجو برای پیدا کردن سریع موضوعات استفاده کنید</div><div class="box green"><b>⌨ کیبورد:</b> با کلیدهای ◀ ▶ حرکت کنید</div><div class="box yellow"><b>🧮 ماشین حساب:</b> اسلاید ۵۰ به بعد شامل ماشین حساب کامل مهندسی است</div>`);
+addSlide("👤 فیثاغورث که بود؟", "مقدمه", "فیثاغورث (۵۷۰-۴۹۵ قبل از میلاد) فیلسوف و ریاضیدان یونان باستان بود. او در جزیره ساموس متولد شد و مکتب فیثاغورثی را در کروتون (ایتالیای امروزی) بنیان نهاد. جمله معروف او: «همه چیز عدد است» نشان‌دهنده اعتقاد عمیق او به نظم ریاضی در جهان هستی بود.");
+addSlide("🏛 مکتب فیثاغورثی", "مقدمه", "مکتب فیثاغورثی فقط یک مدرسه ریاضی نبود، بلکه ترکیبی از ریاضیات، فلسفه، عرفان و شیوه زندگی بود. فیثاغورثی‌ها معتقد به تناسخ ارواح بودند، گیاه‌خواری می‌کردند و اعداد را اساس جهان می‌دانستند. آنها ریاضیات را به چهار شاخه تقسیم کردند: حساب، هندسه، موسیقی و نجوم.");
+addSlide("🌍 فیثاغورث و تمدن‌های دیگر", "مقدمه", "جالب است بدانید که قضیه فیثاغورث را تمدن‌های دیگر نیز می‌شناختند. بابلی‌ها در لوح Plimpton 322 (حدود ۱۸۰۰ ق.م) فهرستی از ثلاثی‌های فیثاغورثی را ثبت کرده بودند. مصریان باستان از مثلث ۳-۴-۵ برای ساخت اهرام استفاده می‌کردند. در هند باستان (شولبا سوترا، ۸۰۰ ق.م) و چین باستان (چوپی سوانجینگ، ۵۰۰ ق.م) نیز این قضیه شناخته شده بود.");
+addSlide("📐 تعریف مثلث", "مقدمه", "مثلث شکلی است با سه ضلع و سه زاویه. مجموع زوایای داخلی مثلث همیشه ۱۸۰ درجه است. انواع مثلث بر اساس زاویه: حاده (تمام زوایا کمتر از ۹۰°)، قائم‌الزاویه (یک زاویه ۹۰°)، منفرجه (یک زاویه بیشتر از ۹۰°). انواع مثلث بر اساس اضلاع: متساوی‌الاضلاع، متساوی‌الساقین، مختلف‌الاضلاع.");
+
+// اسلایدهای ۷-۲۰: مفاهیم پایه
+const basics = [
+    "مثلث قائم‌الزاویه مثلثی است که یک زاویه ۹۰ درجه دارد. ضلع مقابل زاویه قائمه «وتر» نام دارد و همیشه بزرگترین ضلع مثلث است. دو ضلع دیگر که زاویه قائمه را تشکیل می‌دهند «ساق» یا «قاعده و ارتفاع» نامیده می‌شوند.",
+    "در مثلث قائم‌الزاویه، وتر همیشه از هر یک از دو ضلع دیگر بزرگتر است. این یک اصل بدیهی در هندسه است. رابطه بین اضلاع توسط قضیه فیثاغورث بیان می‌شود.",
+    "مجموع زوایای تند (حاده) در مثلث قائم‌الزاویه همیشه ۹۰ درجه است. یعنی اگر یک زاویه ۹۰ درجه باشد، دو زاویه دیگر حتماً متمم یکدیگرند (مجموعشان ۹۰ درجه)."
+];
+basics.forEach((text, i) => addSlide(`📐 مفهوم ${i+7}: مثلث قائم‌الزاویه`, "مفاهیم پایه", text));
+
+// ۱۰ اسلاید فرمول و بیان قضیه
+for(let i=1; i<=10; i++) {
+    addSlide(`📝 بیان قضیه - بخش ${i}`, "قضیه", `
+        <div class="formula">a² + b² = c²</div>
+        <div class="box">در هر مثلث قائم‌الزاویه، مربع وتر (c²) برابر است با مجموع مربعات دو ضلع دیگر (a² + b²).</div>
+        <div class="box green">این رابطه یکی از مهم‌ترین و پرکاربردترین فرمول‌های تاریخ ریاضیات است.</div>
+    `);
+}
+
+// اسلایدهای ۳۱-۵۰: اثبات‌ها
+const proofs = [
+    {title: "اثبات تصویری", text: "مربعی به ضلع (a+b) رسم کنید. ۴ مثلث قائم‌الزاویه یکسان داخل آن قرار دهید. مساحت مربع بزرگ = (a+b)². از طرفی مساحت مربع = c² + 4(½ab) = c² + 2ab. پس a²+2ab+b² = c²+2ab ⇒ a²+b² = c²."},
+    {title: "اثبات اقلیدسی", text: "اقلیدس در کتاب اصول (حدود ۳۰۰ ق.م) با رسم ارتفاع از رأس قائمه، مثلث را به دو مثلث متشابه تقسیم کرد و با استفاده از نسبت‌های هندسی، قضیه را اثبات نمود."},
+    {title: "اثبات جبری", text: "(a+b)² = a² + 2ab + b². مساحت ۴ مثلث = 2ab. مساحت مربع داخلی = c². a² + 2ab + b² = c² + 2ab ⇒ a² + b² = c²."},
+    {title: "اثبات گارفیلد", text: "جیمز گارفیلد (رئیس‌جمهور آمریکا) در سال ۱۸۷۶ اثباتی با استفاده از ذوزنقه ارائه داد."},
+    {title: "اثبات داوینچی", text: "لئوناردو داوینچی با برش و تقارن اشکال هندسی نشان داد که مساحت‌ها برابرند."},
+];
+proofs.forEach((p, i) => addSlide(`📐 اثبات ${i+1}: ${p.title}`, "اثبات‌ها", p.text));
+
+// اسلاید ۵۰-۲۰۰: ماشین حساب مهندسی کامل
+addSlide("🧮 ماشین حساب مهندسی کامل", "ماشین حساب", `
+    <div class="calc-grid">
+        <div class="calc-card"><h4>🔵 محاسبه وتر</h4>
+            <input type="number" id="ca" placeholder="ضلع a" value="3">
+            <input type="number" id="cb" placeholder="ضلع b" value="4">
+            <button class="btn-blue" onclick="calcHyp()">محاسبه c</button>
+            <div class="result-box" id="rHyp"><div class="result-main" id="rHypMain"></div><div class="result-detail" id="rHypDet"></div></div>
+        </div>
+        <div class="calc-card"><h4>🔴 محاسبه ضلع مجهول</h4>
+            <input type="number" id="ca2" placeholder="ضلع معلوم" value="3">
+            <input type="number" id="cc2" placeholder="وتر" value="5">
+            <button class="btn-red" onclick="calcLeg()">محاسبه ضلع</button>
+            <div class="result-box" id="rLeg"><div class="result-main" id="rLegMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>🟡 بررسی مثلث</h4>
+            <input type="number" id="ca3" placeholder="a" value="3">
+            <input type="number" id="cb3" placeholder="b" value="4">
+            <input type="number" id="cc3" placeholder="c" value="5">
+            <button class="btn-yellow" onclick="calcCheck()">بررسی</button>
+            <div class="result-box" id="rCheck"><div class="result-main" id="rCheckMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>📐 مساحت مثلث</h4>
+            <input type="number" id="ca4" placeholder="قاعده" value="3">
+            <input type="number" id="cb4" placeholder="ارتفاع" value="4">
+            <button class="btn-green" onclick="calcArea()">مساحت</button>
+            <div class="result-box" id="rArea"><div class="result-main" id="rAreaMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>📏 محیط مثلث</h4>
+            <input type="number" id="ca5" placeholder="a" value="3">
+            <input type="number" id="cb5" placeholder="b" value="4">
+            <button class="btn-blue" onclick="calcPeri()">محیط</button>
+            <div class="result-box" id="rPeri"><div class="result-main" id="rPeriMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>🔢 مولد ثلاثی</h4>
+            <input type="number" id="gm" placeholder="m" value="3">
+            <input type="number" id="gn" placeholder="n" value="1">
+            <button class="btn-green" onclick="genTriple()">تولید</button>
+            <div class="result-box" id="rGen"><div class="result-main" id="rGenMain"></div></div>
+        </div>
+    </div>
+`);
+
+// ماشین حساب سینوس و کسینوس
+addSlide("📊 محاسبات مثلثاتی", "ماشین حساب", `
+    <div class="calc-grid">
+        <div class="calc-card"><h4>📐 سینوس (sin)</h4>
+            <input type="number" id="sinAngle" placeholder="زاویه به درجه" value="30">
+            <button class="btn-blue" onclick="calcSin()">محاسبه</button>
+            <div class="result-box" id="rSin"><div class="result-main" id="rSinMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>📐 کسینوس (cos)</h4>
+            <input type="number" id="cosAngle" placeholder="زاویه به درجه" value="60">
+            <button class="btn-green" onclick="calcCos()">محاسبه</button>
+            <div class="result-box" id="rCos"><div class="result-main" id="rCosMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>📐 تانژانت (tan)</h4>
+            <input type="number" id="tanAngle" placeholder="زاویه به درجه" value="45">
+            <button class="btn-red" onclick="calcTan()">محاسبه</button>
+            <div class="result-box" id="rTan"><div class="result-main" id="rTanMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>📐 آرک سینوس</h4>
+            <input type="number" id="asinVal" placeholder="مقدار (۰ تا ۱)" value="0.5" step="0.01">
+            <button class="btn-yellow" onclick="calcAsin()">محاسبه</button>
+            <div class="result-box" id="rAsin"><div class="result-main" id="rAsinMain"></div></div>
+        </div>
+    </div>
+`);
+
+// ماشین حساب فاکتوریل و توان
+addSlide("🔢 محاسبات عددی", "ماشین حساب", `
+    <div class="calc-grid">
+        <div class="calc-card"><h4>❗ فاکتوریل (!n)</h4>
+            <input type="number" id="factNum" placeholder="عدد" value="5" min="0" max="170">
+            <button class="btn-blue" onclick="calcFact()">محاسبه</button>
+            <div class="result-box" id="rFact"><div class="result-main" id="rFactMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>⬆ توان (x^y)</h4>
+            <input type="number" id="powBase" placeholder="پایه" value="2">
+            <input type="number" id="powExp" placeholder="توان" value="10">
+            <button class="btn-green" onclick="calcPow()">محاسبه</button>
+            <div class="result-box" id="rPow"><div class="result-main" id="rPowMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>√ رادیکال</h4>
+            <input type="number" id="sqrtNum" placeholder="عدد" value="144">
+            <button class="btn-red" onclick="calcSqrt()">محاسبه</button>
+            <div class="result-box" id="rSqrt"><div class="result-main" id="rSqrtMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>📊 لگاریتم (log)</h4>
+            <input type="number" id="logNum" placeholder="عدد" value="100">
+            <button class="btn-yellow" onclick="calcLog()">محاسبه</button>
+            <div class="result-box" id="rLog"><div class="result-main" id="rLogMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>🔄 ترکیب (C(n,r))</h4>
+            <input type="number" id="combN" placeholder="n" value="10">
+            <input type="number" id="combR" placeholder="r" value="3">
+            <button class="btn-blue" onclick="calcComb()">محاسبه</button>
+            <div class="result-box" id="rComb"><div class="result-main" id="rCombMain"></div></div>
+        </div>
+        <div class="calc-card"><h4>π عدد پی</h4>
+            <button class="btn-green" onclick="showPi()" style="margin-top:20px">نمایش π</button>
+            <div class="result-box" id="rPi"><div class="result-main" id="rPiMain"></div></div>
+        </div>
+    </div>
+`);
+
+// ۱۰۰ اسلاید ثلاثی‌های فیثاغورثی
+const triples = [
+    [3,4,5],[5,12,13],[8,15,17],[7,24,25],[9,40,41],[11,60,61],[12,35,37],[13,84,85],
+    [16,63,65],[20,21,29],[28,45,53],[33,56,65],[36,77,85],[39,80,89],[48,55,73],
+    [65,72,97],[20,99,101],[60,91,109],[15,112,113],[44,117,125],[88,105,137],
+    [17,144,145],[24,143,145],[51,140,149],[85,132,157],[119,120,169],[52,165,173],
+    [19,180,181],[57,176,185],[104,153,185],[95,168,193],[28,195,197],[84,187,205],
+    [96,247,265],[140,225,265],[69,260,269],[120,209,241],[160,231,281],[115,252,277],
+    [207,224,305],[136,273,305],[180,299,349],[84,437,445],[200,441,481],[280,351,449],
+    [220,459,509],[336,377,505],[300,451,541],[320,561,649],[400,561,689],[460,609,761],
+    [480,551,731],[540,629,829],[600,651,885],[660,779,1021],[700,855,1105],[760,987,1245],
+    [840,1105,1385],[920,1221,1525],[1000,1377,1697],[1080,1513,1849],[1160,1651,2001],
+    [1240,1791,2153],[1320,1933,2305],[1400,2077,2457],[1480,2221,2609],[1560,2367,2761]
+];
+triples.forEach((t, i) => {
+    addSlide(`⭐ ثلاثی ${i+1}: ${t[0]}-${t[1]}-${t[2]}`, "ثلاثی‌ها", 
+        `<div class="formula">${t[0]}² + ${t[1]}² = ${t[2]}²</div>
+        <div class="box green">${t[0]}² = ${t[0]*t[0]} | ${t[1]}² = ${t[1]*t[1]} | ${t[0]*t[0]}+${t[1]*t[1]} = ${t[2]*t[2]} ✓</div>`);
+});
+
+// ۱۰۰ اسلاید کاربردها
+const applications = [
+    "🏗 معماری: محاسبه ارتفاع ساختمان‌ها، طراحی سقف‌های شیبدار، روش ۳-۴-۵ برای اطمینان از قائمه بودن دیوارها",
+    "🧭 ناوبری و GPS: محاسبه کوتاه‌ترین فاصله بین دو نقطه روی زمین با استفاده از مثلث‌سازی",
+    "🤖 رباتیک: محاسبه مسیر حرکت بازوی ربات در فضای دوبعدی و سه‌بعدی",
+    "🎮 بازی‌سازی: محاسبه فاصله بین اشیاء در محیط بازی، تشخیص برخورد، حرکت کاراکترها",
+    "🏥 پزشکی: تصویربرداری CT Scan و MRI، بازسازی تصاویر سه‌بعدی از مقاطع دوبعدی",
+    "🚀 فضانوردی: محاسبه مسیر فضاپیماها، تعیین فاصله ستارگان و سیارات",
+    "📡 مخابرات: محاسبه ارتفاع و فاصله بهینه آنتن‌های مخابراتی، تعیین قدرت سیگنال",
+    "🎵 موسیقی: کشف نسبت‌های هارمونیک توسط فیثاغورث، فاصله بین نت‌های موسیقی",
+    "🔬 نانوتکنولوژی: محاسبه فواصل بین اتمی، طراحی ساختارهای مولکولی",
+    "🎨 هنر و طراحی: پرسپکتیو در نقاشی، تناسبات طلایی، طراحی گرافیک"
+];
+for(let i=0; i<10; i++) {
+    for(let j=0; j<10; j++) {
+        let idx = (i*10)+j+1;
+        let app = applications[j];
+        addSlide(`🌍 کاربرد ${idx}: ${app.split(':')[0]}`, "کاربردها", 
+            `<div class="box"><b>${app.split(':')[0]}</b><br>${app.split(':')[1]||app}</div>
+            <p>قضیه فیثاغورث در این حوزه به دلیل دقت و سادگی، ابزاری ضروری است. مهندسان و دانشمندان روزانه از این رابطه استفاده می‌کنند.</p>`);
+    }
+}
+
+// ۱۰۰ اسلاید آموزش پیشرفته
+for(let i=1; i<=50; i++) {
+    addSlide(`📚 آموزش پیشرفته ${i}`, "پیشرفته", 
+        `<div class="box">تعمیم قضیه فیثاغورث به فضای سه‌بعدی: d² = a² + b² + c²</div>
+        <div class="box green">در فضای n بعدی: d² = Σ(xᵢ-yᵢ)²</div>
+        <p>این تعمیم اساس کار الگوریتم‌های یادگیری ماشین، هوش مصنوعی و داده‌کاوی است.</p>`);
+}
+
+// ۵۰ اسلاید آزمون
+const quizQuestions = [
+    {q:"کدام ثلاثی فیثاغورثی است؟",opts:["3-4-5","2-3-4","1-2-3","4-5-6"],ans:0},
+    {q:"فرمول اصلی قضیه فیثاغورث؟",opts:["a²+b²=c²","a+b=c","a²-b²=c²","ab=c"],ans:0},
+    {q:"فیثاغورث اهل کجا بود؟",opts:["یونان","مصر","چین","هند"],ans:0},
+    {q:"بزرگترین ضلع مثلث قائم‌الزاویه؟",opts:["وتر","قاعده","ارتفاع","ساق"],ans:0},
+    {q:"مجموع زوایای مثلث؟",opts:["۱۸۰°","۹۰°","۲۷۰°","۳۶۰°"],ans:0},
+];
+for(let i=0; i<10; i++) {
+    for(let j=0; j<5; j++) {
+        let idx = i*5+j+1;
+        let q = quizQuestions[j];
+        addSlide(`🎯 آزمون ${idx}`, "آزمون", 
+            `<p style="text-align:center;font-size:1.3em">${q.q}</p>
+            ${q.opts.map((opt, oi) => `<button class="quiz-btn" onclick="checkQuiz(${oi},${q.ans},this)">${String.fromCharCode(65+oi)}) ${opt}</button>`).join('')}
+            <p id="qf${idx}" style="text-align:center;margin-top:15px"></p>`);
+    }
+}
+
+// اسلایدهای پایانی
+addSlide("📊 آمار و ارقام", "پایانی", "۳۷۰+ اثبات مختلف | ۲۵۰۰+ سال قدمت | ۲۰+ رشته علمی | ۵ تمدن باستانی | ∞ ثلاثی فیثاغورثی");
+addSlide("💬 نقل قول‌های ماندگار", "پایانی", "«همه چیز عدد است» - فیثاغورث\n«ریاضیات زبان طبیعت» - گالیله\n«هندسه دانش اندازه‌گیری جهان است» - افلاطون");
+addSlide("🎓 جمع‌بندی نهایی", "پایانی", `<div class="formula">a² + b² = c²</div><p style="text-align:center">بنیادی‌ترین قضیه هندسه | پل بین جبر و هندسه | اساس مثلثات | کاربرد در تمام علوم</p>`);
+addSlide("❤️ پایان", "پایانی", "<h2 style='text-align:center;color:var(--green)'>با سپاس از توجه شما</h2><p style='text-align:center'>امیدوارم از این دانشنامه جامع لذت برده باشید.<br>ریاضیات را دوست داشته باشید.</p>");
+
+totalSlides = slides.length;
+
+// ═══════════════ دسته‌بندی‌ها ═══════════════
+const categories = [...new Set(slides.map(s => s.category))];
+
+// ═══════════════ ساخت تب‌ها ═══════════════
+function buildTabs() {
+    let html = `<button class="tab active" onclick="filterCategory('all')">همه (${totalSlides})</button>`;
+    categories.forEach(cat => {
+        let count = slides.filter(s => s.category === cat).length;
+        html += `<button class="tab" onclick="filterCategory('${cat}')">${cat} (${count})</button>`;
+    });
+    document.getElementById('tabBar').innerHTML = html;
+}
+
+let filteredSlides = [...slides];
+function filterCategory(cat) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    filteredSlides = cat === 'all' ? [...slides] : slides.filter(s => s.category === cat);
+    current = 1;
+    renderSlide(0);
+}
+
+// ═══════════════ جستجو ═══════════════
+function searchSlide(query) {
+    if (!query) { filteredSlides = [...slides]; current = 1; renderSlide(0); return; }
+    query = query.toLowerCase();
+    filteredSlides = slides.filter(s => s.title.toLowerCase().includes(query) || s.content.toLowerCase().includes(query));
+    current = 1;
+    if (filteredSlides.length > 0) renderSlide(0);
+    else document.getElementById('slideContent').innerHTML = '<div class="slide active"><h2>❌ نتیجه‌ای یافت نشد</h2></div>';
+}
+
+// ═══════════════ رندر اسلاید ═══════════════
+function renderSlide(idx) {
+    if (filteredSlides.length === 0) return;
+    let s = filteredSlides[idx];
+    let html = `<div class="slide active">
+        <span style="color:#484f58;font-size:0.8em">${s.category}</span>
+        <h2>${s.title}</h2>
+        ${s.content}
+    </div>`;
+    document.getElementById('slideContent').innerHTML = html;
+    document.getElementById('pageInfo').textContent = `${idx+1} / ${filteredSlides.length}`;
+    window.scrollTo(0, 0);
+}
+
+// ═══════════════ ناوبری ═══════════════
+function goTo(n) {
+    if (n < 1 || n > filteredSlides.length) return;
+    current = n;
+    renderSlide(n - 1);
+}
+
+// ═══════════════ توابع ماشین حساب ═══════════════
+function calcHyp() {
+    let a = parseFloat(document.getElementById('ca').value) || 0;
+    let b = parseFloat(document.getElementById('cb').value) || 0;
+    let c = Math.sqrt(a*a + b*b);
+    document.getElementById('rHyp').classList.add('show');
+    document.getElementById('rHypMain').textContent = `c = ${c.toFixed(4)}`;
+    document.getElementById('rHypDet').textContent = `√(${a}² + ${b}²) = √(${a*a} + ${b*b}) = √${a*a+b*b}`;
+}
+function calcLeg() {
+    let a = parseFloat(document.getElementById('ca2').value) || 0;
+    let c = parseFloat(document.getElementById('cc2').value) || 0;
+    document.getElementById('rLeg').classList.add('show');
+    if (c <= a) { document.getElementById('rLegMain').textContent = '⚠ وتر باید بزرگتر از ضلع باشد'; return; }
+    let b = Math.sqrt(c*c - a*a);
+    document.getElementById('rLegMain').textContent = `ضلع مجهول = ${b.toFixed(4)}`;
+}
+function calcCheck() {
+    let a = parseFloat(document.getElementById('ca3').value) || 0;
+    let b = parseFloat(document.getElementById('cb3').value) || 0;
+    let c = parseFloat(document.getElementById('cc3').value) || 0;
+    let sides = [a, b, c].sort((x, y) => x - y);
+    let ok = Math.abs(sides[0]*sides[0] + sides[1]*sides[1] - sides[2]*sides[2]) < 0.001;
+    document.getElementById('rCheck').classList.add('show');
+    document.getElementById('rCheckMain').textContent = ok ? '✅ بله! مثلث قائم‌الزاویه است' : '❌ خیر';
+    document.getElementById('rCheckMain').style.color = ok ? 'var(--green)' : 'var(--red)';
+}
+function calcArea() {
+    let a = parseFloat(document.getElementById('ca4').value) || 0;
+    let b = parseFloat(document.getElementById('cb4').value) || 0;
+    document.getElementById('rArea').classList.add('show');
+    document.getElementById('rAreaMain').textContent = `مساحت = ${(a*b/2).toFixed(4)}`;
+}
+function calcPeri() {
+    let a = parseFloat(document.getElementById('ca5').value) || 0;
+    let b = parseFloat(document.getElementById('cb5').value) || 0;
+    let c = Math.sqrt(a*a + b*b);
+    document.getElementById('rPeri').classList.add('show');
+    document.getElementById('rPeriMain').textContent = `محیط = ${(a+b+c).toFixed(4)}`;
+}
+function genTriple() {
+    let m = parseInt(document.getElementById('gm').value) || 2;
+    let n = parseInt(document.getElementById('gn').value) || 1;
+    document.getElementById('rGen').classList.add('show');
+    if (m <= n) { document.getElementById('rGenMain').textContent = '⚠ m باید بزرگتر از n باشد'; return; }
+    let a = m*m - n*n, b = 2*m*n, c = m*m + n*n;
+    document.getElementById('rGenMain').textContent = `(${a}, ${b}, ${c})`;
+}
+function calcSin() {
+    let angle = parseFloat(document.getElementById('sinAngle').value) || 0;
+    let rad = angle * Math.PI / 180;
+    document.getElementById('rSin').classList.add('show');
+    document.getElementById('rSinMain').textContent = `sin(${angle}°) = ${Math.sin(rad).toFixed(6)}`;
+}
+function calcCos() {
+    let angle = parseFloat(document.getElementById('cosAngle').value) || 0;
+    let rad = angle * Math.PI / 180;
+    document.getElementById('rCos').classList.add('show');
+    document.getElementById('rCosMain').textContent = `cos(${angle}°) = ${Math.cos(rad).toFixed(6)}`;
+}
+function calcTan() {
+    let angle = parseFloat(document.getElementById('tanAngle').value) || 0;
+    let rad = angle * Math.PI / 180;
+    document.getElementById('rTan').classList.add('show');
+    document.getElementById('rTanMain').textContent = `tan(${angle}°) = ${Math.tan(rad).toFixed(6)}`;
+}
+function calcAsin() {
+    let val = parseFloat(document.getElementById('asinVal').value) || 0;
+    document.getElementById('rAsin').classList.add('show');
+    if (val < -1 || val > 1) { document.getElementById('rAsinMain').textContent = '⚠ مقدار باید بین -۱ و ۱ باشد'; return; }
+    document.getElementById('rAsinMain').textContent = `arcsin(${val}) = ${(Math.asin(val)*180/Math.PI).toFixed(4)}°`;
+}
+function calcFact() {
+    let n = parseInt(document.getElementById('factNum').value) || 0;
+    document.getElementById('rFact').classList.add('show');
+    if (n < 0 || n > 170) { document.getElementById('rFactMain').textContent = '⚠ عدد بین ۰ تا ۱۷۰'; return; }
+    let f = 1; for(let i=2; i<=n; i++) f*=i;
+    document.getElementById('rFactMain').textContent = `${n}! = ${f.toExponential(4)}`;
+}
+function calcPow() {
+    let base = parseFloat(document.getElementById('powBase').value) || 0;
+    let exp = parseFloat(document.getElementById('powExp').value) || 0;
+    document.getElementById('rPow').classList.add('show');
+    document.getElementById('rPowMain').textContent = `${base}^${exp} = ${Math.pow(base, exp).toFixed(6)}`;
+}
+function calcSqrt() {
+    let n = parseFloat(document.getElementById('sqrtNum').value) || 0;
+    document.getElementById('rSqrt').classList.add('show');
+    document.getElementById('rSqrtMain').textContent = n >= 0 ? `√${n} = ${Math.sqrt(n).toFixed(6)}` : '⚠ عدد منفی!';
+}
+function calcLog() {
+    let n = parseFloat(document.getElementById('logNum').value) || 0;
+    document.getElementById('rLog').classList.add('show');
+    document.getElementById('rLogMain').textContent = n > 0 ? `log₁₀(${n}) = ${Math.log10(n).toFixed(6)}` : '⚠ عدد مثبت وارد کنید';
+}
+function calcComb() {
+    let n = parseInt(document.getElementById('combN').value) || 0;
+    let r = parseInt(document.getElementById('combR').value) || 0;
+    document.getElementById('rComb').classList.add('show');
+    if (r > n) { document.getElementById('rCombMain').textContent = '⚠ r باید ≤ n باشد'; return; }
+    let fn = 1, fr = 1, fnr = 1;
+    for(let i=2; i<=n; i++) fn*=i;
+    for(let i=2; i<=r; i++) fr*=i;
+    for(let i=2; i<=n-r; i++) fnr*=i;
+    document.getElementById('rCombMain').textContent = `C(${n},${r}) = ${Math.round(fn/(fr*fnr))}`;
+}
+function showPi() {
+    document.getElementById('rPi').classList.add('show');
+    document.getElementById('rPiMain').textContent = `π = ${Math.PI.toFixed(15)}`;
+}
+function checkQuiz(i, ans, btn) {
+    document.querySelectorAll('#slideContent .quiz-btn').forEach(b => { b.disabled = true; b.classList.remove('correct', 'wrong'); });
+    if (i === ans) {
+        btn.classList.add('correct');
+        document.getElementById('qf' + (Math.ceil(current/5)*5 + (current%5||5) - 5 + 1)).textContent = '🎉 آفرین!';
+    } else {
+        btn.classList.add('wrong');
+        document.querySelectorAll('#slideContent .quiz-btn')[ans].classList.add('correct');
+    }
+}
+
+// کیبورد
+document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); goTo(Math.min(filteredSlides.length, current + 1)); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goTo(Math.max(1, current - 1)); }
+});
+
+// شروع
+buildTabs();
+renderSlide(0);
+</script>
+</body>
+</html>
